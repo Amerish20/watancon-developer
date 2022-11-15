@@ -1,0 +1,41 @@
+.input-firxed-width{width:92%; float:left}
+.icon-fixed-width{float:left;cursor: pointer; width:6%;
+    line-height: 2em;
+    margin-left: 2%;}
+
+@media (min-width: 1040px) and (max-width: 940px) {
+#example_filter{right: 200px;}
+.username-align{top:63%}
+}
+@media (min-width: 940px) and (max-width: 830px) {
+#example_filter{right: 300px;}
+.username-align{top:63%}
+}
+@media (min-width: 830px) and (max-width: 644px) {
+#example_filter{right: 400px;}
+.username-align{top:63%}
+}
+
+@media (min-width: 320px) and (max-width: 480px) { 
+  #nav{max-height: 3.5em!important; z-index:999999; float:left} 
+  #nav .navbar, #nav .container-fluid, #nav .navbar-header{max-height: 3.5em!important;} 
+  .navTrigger{top:22%}
+  .header-logo{left:10%; top:9%}
+  .logo-icon{width:11%;margin-top:.5em;}
+  .txt-head{padding-top: 4.1%; font-size: 1em; margin-left:3.5%}
+  .logout{top:18%}
+  .page-head a {top:55%; right:12%; left:auto}
+  .page-head a i{font-size:1.3em;}
+  .social{top:25%; padding-left:7%}
+  .checkbox label{font-size: .9em;}
+  .xeno-tree .menu a{font-size: 1.2em;}
+  .mainmenu{top:-7em; margin-bottom:8px; z-index:999}
+  .clicked{transform: translateY(480%); transition: 1.8s all ease;}
+  .dialog{font-size:.6em}
+  #FleetDialog{max-width:200px!important}
+  .report-sidebar{float:left; min-height:auto}
+  .custom-padding{padding-left:1%; padding-right:1%}
+  .custom-padding2{padding:1%}
+  .report-view-area{float:left;width:100%;}
+  .username-align{top:63%}
+}

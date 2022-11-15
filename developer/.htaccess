@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1
+
+# Leverage browser caching using mod_headers #
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+        Header set Expires "Wed, 15 Apr 2020 20:00:00 GMT"
+        Header set Cache-Control "public"
+    </FilesMatch>
+</IfModule>
+# End of Leverage browser caching using mod_headers #

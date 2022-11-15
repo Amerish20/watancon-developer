@@ -1,0 +1,55 @@
+.disp_block{display:block!important}
+	.multiselect-container li a label{text-transform: lowercase; margin-top:2%!important}
+	.multiselect-container li a label::first-letter{text-transform: uppercase;}
+	li.multiselect-item.multiselect-group.multiselect-group-clickable{border-bottom: 1px solid #8bb0c8; }
+	.multiselect-group-clickable a{padding-right:10px!important}
+  	.multiselect-group a b{color:#506e72; font-size:.9em; }
+	#shipModal{z-index:1000000}
+ 	.geoffence_multi_select .active a b{color:white}
+	.multiselect-mainhead{width:100%; display:inline-block; vertical-align:text-bottom; padding-left:5px}
+	.multiselect-group-clickable b.caret{margin-top:3%; float:right; }
+	.popup-button{margin:10px 0 20px 0; text-align:center}
+	.node .title{vertical-align:text-bottom}
+	.xeno-tree .loader, .xeno-tree .loaders, .bhoechie-tab-content .loader, .loader2 { position: absolute; top: 0; left: 0; z-index: 1020; background-color: rgba(255,255,255,.7);
+    width: 100%; height: 100%;}
+	
+	#shiping_table_div { overflow-y: auto; height: 58vh; }
+
+/* Just common table stuff. */
+#shiping_table_div table  { border-collapse: collapse; width: 100%; }
+#shiping_table_div th,#shiping_table_div td { padding: 8px 16px; }
+#shiping_table_div .header th { background: #3b5998; font-weight: bold; color: white; border-top:1px solid #3b5998 }
+
+::-webkit-scrollbar-track
+	{
+		box-shadow: inset 0 0 10px olivedrab;
+border-radius: 10px;
+	}
+	
+	::-webkit-scrollbar
+	{
+		width: 11px; height: 11px;
+	background-color: #F5F5F5;
+	}
+	
+	::-webkit-scrollbar-thumb
+	{
+		border-radius: 10px;
+background: rgba(51,122,183,.5);
+box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	}
+	.Blink {
+  animation: blinker 1.5s cubic-bezier(.8, 0, 1, 1) infinite alternate;  
+}
+.status-font-big{font-size:1.2em; float:right; display:inline-block}
+#FleetDialog {
+    max-width: 420px;
+}
+.green-color{color:#09b605}
+.active .green-color{ color:#3cff00}
+.round-shadow{    box-shadow: 0 0 10px 0 rgba(0,0,0,.2); border-radius:50px}
+
+@keyframes blinker {  
+  from { opacity: 1; }
+  to { opacity: .7; }
+}
