@@ -545,5 +545,42 @@ class Devtools extends CI_Controller
 
 	}
 
+	public function exceedidle() {
+
+		if($this->session->userdata('username')) {
+			$where['status'] 		 = "1"; 
+			$data['departmentdata']  = $this->Devtools_model->gps_datacheck("id,name","department",$where,"1");
+			$this->load->view('devtools/header');
+			$this->load->view('devtools/exceedidle',$data);
+		} else {
+			header('location:'.base_url().'devtools/login');
+		}
+    	
+	}
+
+	public function getExceedData() {
+		//print_r($_POST);exit;
+		$from_date=strtotime($this->input->post("from_date"))*1000;
+		$to_date=strtotime($this->input->post("to_date"))*1000;
+		$fleetid  = trim($this->input->post('fleetid'));
+
+		$where['vehicle_id']     = $fleetid;
+		$where['device_timestamp>']=$from_date;
+		$where['device_timestamp<']=$to_date;
+		$rowlimit="300";
+		$fleetexceeddata = $this->Devtools_model->gps_datacheck("id,vehicle_id,device_timestamp,lattitude,lognitude,speed,ign_status,satelite","vehicle_gps_information",$where,"1","",$rowlimit);
+		//print_r($fleetexceeddata);exit;
+
+		if(!empty($fleetexceeddata)) {	
+			print json_encode($fleetexceeddata);
+			die;
+		} else {
+			$error = ["errorflag" => "1"];
+			print json_encode($error);
+			die;
+		}
+    	
+	}
+
 }
 ?>

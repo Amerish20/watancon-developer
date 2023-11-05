@@ -25,7 +25,7 @@ class Devtools_model extends CI_Model
 		  $this->db->group_by($groupby); 
 		  
  		$query = $this->db->get();
-		  //print  $this->db->last_query();
+		//print  $this->db->last_query();exit;
 		if($dom=="1")
 	      return $result=$query->result_array();
 	   else
