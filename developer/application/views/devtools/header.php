@@ -64,6 +64,7 @@
         <li><a href="<?=base_url()?>devtools/dis" class="white">D,I,S,G Count</a></li>
         <li><a href="<?=base_url()?>devtools/gnupdate" class="white">GN Update</a></li>
         <li><a href="<?=base_url()?>devtools/exceedidle" class="white">Exceed Idle</a></li>
+        <li><a href="<?=base_url()?>devtools/km" class="white">KM</a></li>
       </ul> 
       <span class="barname"><?php if($this->session->userdata('username')){ echo ucfirst($this->session->userdata('username'));}?></span>
       &nbsp;&nbsp;

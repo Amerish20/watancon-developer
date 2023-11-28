@@ -582,5 +582,92 @@ class Devtools extends CI_Controller
     	
 	}
 
+	public function km() {
+
+		if($this->session->userdata('username')) {
+			$where['status'] 		 = "1"; 
+			$data['departmentdata']  = $this->Devtools_model->gps_datacheck("id,name","department",$where,"1");
+			$this->load->view('devtools/header');
+			$this->load->view('devtools/km',$data);
+		} else {
+			header('location:'.base_url().'devtools/login');
+		}
+    	
+	}
+
+	public function updateKM() {
+
+		$fleetid=$this->input->post("fleetid");
+		$odometer=$this->input->post("odometer");
+
+		if($fleetid!=""){
+			$return['error_flag']="0";
+			$where['vd.id']=$fleetid;
+	 		$sim_data = $this->Devtools_model->db_simdetails($where);
+	 		$phonenumer=$sim_data[0]['sim_num'];
+		  	if($odometer!='' && $phonenumer!=''){
+		  	    $result = $this->sendSms($phonenumer,$odometer);
+	  	 		if($result=='1') {
+	  	 			$return['sendsms_flag']="1"; //success
+	  	 			$return['sendsms_message']="Message sent successfully";
+	  	 		} else {
+	  	 			$return['sendsms_flag']="0"; //Failed
+		   			$return['sendsms_message']="Some Error Occur While Sending SMS.Please Contact Admin";
+	  	 		}
+		  	}
+		} else{
+			$return['error_flag']="1";
+			$return['error_message']="Some Error Occur.Please Contact Admin";
+		}	
+
+		print json_encode($return);
+    	
+	}
+
+	 public function sendSms($phonenumer,$odometer) {
+
+	  	$where['id'] = '1';
+	  	$sms_data=$this->Devtools_model->db_datacheck("url,port,baud,countrycode","send_sms",$where,"","","1");
+
+	  	$url =  $sms_data[0]['url'];
+	  	$port = $sms_data[0]['port'];
+	  	$baud = $sms_data[0]['baud'];
+
+	  	$simnumber = $sms_data[0]['countrycode'].$phonenumer;
+
+	  	$postParameter = array(
+			    'number' => $simnumber,
+			    'odometer' => $odometer,
+			    'port' => $port,
+			    'baud' => $baud
+			);
+
+			// Initialize a CURL session.
+			$ch = curl_init(); 
+			 
+			// Return Page contents.
+			//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			 
+			//grab URL and pass it to the variable.
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $postParameter);
+			curl_setopt($ch, CURLOPT_FAILONERROR, true);
+			 
+			$result = curl_exec($ch);
+			
+		
+			// if (curl_errno($ch)) {
+    		// $error_msg = curl_error($ch);
+    		// echo $error_msg;
+			// }	
+
+			if($result=='1'){
+				return 1;
+			}	else {
+				return 0;
+			}
+
+	 }
+
 }
 ?>

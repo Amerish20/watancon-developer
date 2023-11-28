@@ -328,6 +328,17 @@ class Devtools_model extends CI_Model
        return true;	   
        //print $this->db->last_query();
      }
+
+      public function db_simdetails($where){
+ 	    $this->db->select("s.sim_num");
+		 $this->db->from("vehicle_data vd");
+		 $this->db->join("device_data d","d.id=vd.device_id");
+		 $this->db->join("sim_details s","s.id=d.sim_id");
+		 $this->db->where($where);
+		 $query = $this->db->get();
+		//print $this->db->last_query();
+ 	    return $result=$query->result_array();
+   }
  	
 }
 
